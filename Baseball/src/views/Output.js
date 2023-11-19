@@ -17,12 +17,12 @@ const Output = {
     }
 
     if (strike > ZERO && ball > ZERO) {
-      MissionUtils.Console.print(`${ball}${BALL}${strike}${STRIKE}`);
+      MissionUtils.Console.print(`${ball}${BALL} ${strike}${STRIKE}`);
     }
   },
 
   printDefault() {
-    return MissionUtils.Console.print(DEFAULT);
+    MissionUtils.Console.print(DEFAULT);
   },
 
   printOver() {
