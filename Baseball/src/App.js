@@ -1,60 +1,66 @@
 import Input from './views/Input.js';
 import Output from './views/Output.js';
 import Computer from './Computer.js';
+import User from './User.js';
 import Game from './Game.js';
 import { ZERO, ONE, TWO, THREE } from './constants/numbers.js';
 
 class App {
-  #flag;
   #computer = [];
 
   async play() {
-    if (!this.#flag) {
-      Output.printStart();
+    Output.printStart();
+    this.makeComputer();
+    await this.makeUser();
+  }
+
+  makeComputer() {
+    if (this.#computer.length === ZERO) {
+      const computer = new Computer();
+      this.#computer = computer.pickRandomNumbers();
     }
-
-    this.#computer = this.showComputer();
-    this.showGame();
   }
 
-  showComputer() {
-    const computer = new Computer();
-    return computer.pickRandomNumbers();
+  async makeUser() {
+    const numbers = await Input.enterNumbers();
+    const user = new User(numbers).getUser();
+    return this.makeGame(user);
   }
 
-  async showGame() {
-    const user = await Input.enterNumbers();
+  makeGame(user) {
     const game = new Game(user, this.#computer);
     const { strike, ball } = game.compareNumbers();
-    this.showResult(strike, ball);
+    return this.showResult(strike, ball);
   }
 
-  async showFlag() {
-    this.#flag = await Input.enterFlag();
+  async makeFlag() {
+    const flag = await Input.enterFlag();
 
-    if (Number(this.#flag) === ONE) {
-      return this.play();
+    if (Number(flag) === ONE) {
+      this.#computer = [];
+      this.makeComputer();
+      return await this.makeUser();
     }
 
-    if (Number(this.#flag) === TWO) {
+    if (Number(flag) === TWO) {
       return;
     }
   }
 
-  showResult(strike, ball) {
+  async showResult(strike, ball) {
     if (strike === THREE) {
       Output.printResult(strike, ball);
       Output.printOver();
-      return this.showFlag();
+      return await this.makeFlag();
     }
 
     if (strike > ZERO || ball > ZERO) {
       Output.printResult(strike, ball);
-      return this.showGame();
+      return await this.makeUser();
     }
 
     Output.printDefault();
-    return this.showGame();
+    return await this.makeUser();
   }
 }
 
