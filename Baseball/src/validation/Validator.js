@@ -1,5 +1,5 @@
 import { ERROR } from '../constants/messages.js';
-import { ONE, THREE, TWO } from '../constants/numbers.js';
+import { ONE, THREE, TWO, NINE } from '../constants/numbers.js';
 
 const Validator = {
   validateNumbers(numbers) {
@@ -9,7 +9,7 @@ const Validator = {
 
     const user = numbers.split('').map(number => Number(number));
     user.forEach(number => {
-      if (number >= ONE && number <= NINE) {
+      if (number < ONE || number > NINE) {
         throw new Error(ERROR.not_a_valid_number);
       }
     });
@@ -25,7 +25,7 @@ const Validator = {
   },
 
   validateFlag(flag) {
-    if (Number(flag) === ONE || Number(flag) === TWO) {
+    if (Number(flag) !== ONE && Number(flag) !== TWO) {
       throw new Error(ERROR.not_a_valid_number);
     }
   },
