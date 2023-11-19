@@ -12,15 +12,9 @@ const OUTPUT = Object.freeze({
   restart_or_exit: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.',
 });
 
-const ZERO = 0;
-const ONE = 1;
-const TWO = 2;
-const THREE = 3;
-
 const BALL = '볼';
 const STRIKE = '스트라이크';
 const DEFAULT = '낫싱';
-
 const LINE_BREAK = '\n';
 
-export {INPUT, ERROR, OUTPUT, ZERO, ONE, TWO, THREE, BALL, STRIKE, DEFAULT, LINE_BREAK };
+export {INPUT, ERROR, OUTPUT, BALL, STRIKE, DEFAULT, LINE_BREAK };
