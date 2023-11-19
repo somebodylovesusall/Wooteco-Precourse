@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { INPUT } from '../constants/messages.js';
+import { INPUT, LINE_BREAK } from '../constants/messages.js';
 import User from '../User.js';
 import Validator from '../validation/Validator.js';
 
@@ -16,7 +16,7 @@ const Input = {
 
   async enterFlag() {
     try {
-      const flag = await MissionUtils.Console.readLineAsync(INPUT.flag);
+      const flag = await MissionUtils.Console.readLineAsync(`${INPUT.flag}${LINE_BREAK}`);
       Validator.validateFlag(flag);
       return flag;
     } catch (error) {
