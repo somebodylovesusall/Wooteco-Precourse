@@ -1,10 +1,10 @@
 const INPUT = Object.freeze({
   number: '숫자를 입력해주세요 : ',
-  restart_or_exit: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.',
+  flag: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.',
 });
 
 const ERROR = Object.freeze({
-  not_a_valid_number: '유효하지 않은 숫자입니다. 숫자를 다시 입력해 주세요.',
+  not_a_valid_number: '[ERROR] 유효하지 않은 숫자입니다. 숫자를 다시 입력해 주세요.',
 });
 
 const OUTPUT = Object.freeze({
