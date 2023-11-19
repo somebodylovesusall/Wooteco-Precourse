@@ -25,7 +25,7 @@ const Output = {
     MissionUtils.Console.print(DEFAULT);
   },
 
-  printOver() {
+  printEnd() {
     MissionUtils.Console.print(OUTPUT.end);
   },
 };

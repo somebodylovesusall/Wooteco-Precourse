@@ -50,7 +50,7 @@ class App {
   async showResult(strike, ball) {
     if (strike === THREE) {
       Output.printResult(strike, ball);
-      Output.printOver();
+      Output.printEnd();
       return await this.makeFlag();
     }
 
