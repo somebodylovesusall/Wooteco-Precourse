@@ -1,4 +1,5 @@
-import { DEFAULT, THREE, ZERO } from './constants/messages.js';
+import { DEFAULT } from './constants/messages.js';
+import { THREE, ZERO } from './constants/numbers.js';
 
 class Game {
   #computer;
