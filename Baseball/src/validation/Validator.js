@@ -3,17 +3,11 @@ import { ONE, THREE, TWO, NINE } from '../constants/numbers.js';
 
 const Validator = {
   validateNumbers(numbers) {
-    if (numbers.length !== THREE || !Number(numbers) || !Number.isInteger(Number(numbers))) {
+    if (!/^[1-9]{3}$/.test(numbers)) {
       throw new Error(ERROR.not_a_valid_number);
     }
 
     const user = numbers.split('').map(number => Number(number));
-    user.forEach(number => {
-      if (number < ONE || number > NINE) {
-        throw new Error(ERROR.not_a_valid_number);
-      }
-    });
-
     return user;
   },
 
