@@ -8,7 +8,7 @@ const Input = {
     try {
       const numbers = await MissionUtils.Console.readLineAsync(INPUT.number);
       const user = new User(numbers);
-      return user;
+      return user.getUser();
     } catch (error) {
       return Promise.reject(error);
     }
