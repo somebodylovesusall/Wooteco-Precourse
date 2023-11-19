@@ -1,5 +1,5 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { THREE } from './constants/numbers.js';
+import { ONE, THREE, NINE } from './constants/numbers.js';
 
 class Computer {
   #computer = [];
