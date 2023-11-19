@@ -3,7 +3,7 @@ const INPUT = Object.freeze({
 });
 
 const ERROR = Object.freeze({
-  not_a_valid_number: '유효하지 않은 숫자입니다. 다시 입력해 주세요.',
+  not_a_valid_number: '유효하지 않은 숫자입니다. 숫자를 다시 입력해 주세요.',
 });
 
 const OUTPUT = Object.freeze({
