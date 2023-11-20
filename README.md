@@ -2,14 +2,18 @@
 
 ## Pre-Course
 
-### Random Number Baseball
+우아한테크코스 프리코스에서 진행한 미션을 모아 놓은 저장소입니다.
 
-### Car Racing
+### ⚾️ Random Number Baseball
 
-### Lotto
+임의의 세 자리 숫자를 맞히는 숫자 야구 게임입니다. 👉 [README](https://github.com/somebodylovesusall/Wooteco-Precourse/tree/main/Baseball/docs) 👈
 
-### Christmas Promotion
+### 🏎️ Car Racing
 
-### Bridge Pass
+### 🎱 Lotto
 
-### Lunch Menu Recommendation
+### 🎄 Christmas Promotion
+
+### 🌉 Bridge Pass
+
+### 🍱 Lunch Menu Recommendation
