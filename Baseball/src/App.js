@@ -39,7 +39,7 @@ class App {
     if (Number(flag) === ONE) {
       this.#computer = [];
       this.makeComputer();
-      return await this.makeUser();
+      return this.makeUser();
     }
 
     if (Number(flag) === TWO) {
@@ -51,16 +51,16 @@ class App {
     if (strike === THREE) {
       Output.printResult(strike, ball);
       Output.printEnd();
-      return await this.makeFlag();
+      return this.makeFlag();
     }
 
     if (strike > ZERO || ball > ZERO) {
       Output.printResult(strike, ball);
-      return await this.makeUser();
+      return this.makeUser();
     }
 
     Output.printDefault();
-    return await this.makeUser();
+    return this.makeUser();
   }
 }
 
