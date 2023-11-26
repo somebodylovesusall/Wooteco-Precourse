@@ -4,7 +4,7 @@ const INPUT = Object.freeze({
 });
 
 const ERROR = Object.freeze({
-  not_a_valid_names: '[ERROR] 유효하지 않은 자동차 이름입니다. 다시 입력해 주세요.',
+  not_valid_names: '[ERROR] 유효하지 않은 자동차 이름입니다. 다시 입력해 주세요.',
   not_a_valid_trial: '[ERROR] 유효하지 않은 시도 횟수입니다. 다시 입력해 주세요.',
 });
 
@@ -15,7 +15,7 @@ const OUTPUT = Object.freeze({
 
 const HYPHEN = '-';
 const COMMA = ',';
-const COLON = ' : ';
+const COLON = ':';
 const LINE_BREAK = '\n';
 
 export { INPUT, ERROR, OUTPUT, HYPHEN, COMMA, COLON, LINE_BREAK };
