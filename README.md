@@ -2,7 +2,7 @@
 
 ## Pre-Course
 
-우아한테크코스 프리코스에서 진행한 미션을 모아 놓은 저장소입니다.
+우아한테크코스 프리코스 미션 저장소입니다.
 
 ### ⚾️ [Random Number Baseball](https://github.com/somebodylovesusall/Wooteco-Precourse/tree/main/Baseball/docs)
 
