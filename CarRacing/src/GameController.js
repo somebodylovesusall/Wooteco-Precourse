@@ -36,7 +36,6 @@ class GameController {
   makeWinners(car) {
     const cars = car.getCars();
     const winner = new Winner(cars);
-
     const max = winner.countMax();
     const winners = winner.showWinners(max);
 
