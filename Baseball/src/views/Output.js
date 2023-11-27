@@ -1,28 +1,25 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { BALL, DEFAULT, OUTPUT, STRIKE } from '../constants/messages.js';
-import { ZERO } from '../constants/numbers.js';
+import { BALL, NOTHING, OUTPUT, STRIKE } from '../constants/messages.js';
 
 const Output = {
   printStart() {
     MissionUtils.Console.print(OUTPUT.start);
   },
 
-  printResult(strike, ball) {
-    if (strike === ZERO && ball > ZERO) {
-      MissionUtils.Console.print(`${ball}${BALL}`);
-    }
-
-    if (strike > ZERO && ball === ZERO) {
-      MissionUtils.Console.print(`${strike}${STRIKE}`);
-    }
-
-    if (strike > ZERO && ball > ZERO) {
-      MissionUtils.Console.print(`${ball}${BALL} ${strike}${STRIKE}`);
-    }
+  printBall(ball) {
+    MissionUtils.Console.print(`${ball}${BALL}`);
   },
 
-  printDefault() {
-    MissionUtils.Console.print(DEFAULT);
+  printStrike(strike) {
+    MissionUtils.Console.print(`${strike}${STRIKE}`);
+  },
+
+  printStrikeBall(strike, ball) {
+    MissionUtils.Console.print(`${ball}${BALL} ${strike}${STRIKE}`);
+  },
+
+  printNothing() {
+    MissionUtils.Console.print(NOTHING);
   },
 
   printEnd() {
