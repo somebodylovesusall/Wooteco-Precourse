@@ -1,19 +1,19 @@
 import { ERROR } from '../constants/messages.js';
-import { ONE, TWO } from '../constants/numbers.js';
+import { RESTART, EXIT } from '../constants/numbers.js';
 
 const Validator = {
-  validateNumbers(numbers) {
-    if (!/^[1-9]{3}$/.test(numbers)) {
+  validateThreeDigitNumber(threeDigitNumber) {
+    if (!/^[1-9]{3}$/.test(threeDigitNumber)) {
       throw new Error(ERROR.not_a_valid_number);
     }
 
-    if (/(.).*?\1/.test(numbers)) {
+    if (/(.).*?\1/.test(threeDigitNumber)) {
       throw new Error(ERROR.not_a_valid_number);
     }
   },
 
-  validateFlag(flag) {
-    if (Number(flag) !== ONE && Number(flag) !== TWO) {
+  validateRestartOrExit(restartOrExit) {
+    if (Number(restartOrExit) !== RESTART && Number(restartOrExit) !== EXIT) {
       throw new Error(ERROR.not_a_valid_number);
     }
   },
