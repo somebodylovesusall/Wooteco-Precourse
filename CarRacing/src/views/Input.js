@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import { COMMA, INPUT, LINE_BREAK } from '../constants/messages.js';
 import Validator from '../validation/Validator.js';
 
-const Input =  {
+const Input = {
   async enterCarNames() {
     const carNames = await MissionUtils.Console.readLineAsync(`${INPUT.car_names}${LINE_BREAK}`);
     Validator.validateCarNames(carNames);
