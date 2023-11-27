@@ -3,24 +3,16 @@ import { INPUT, LINE_BREAK } from '../constants/messages.js';
 import Validator from '../validation/Validator.js';
 
 const Input = {
-  async enterNumbers() {
-    try {
-      const numbers = await MissionUtils.Console.readLineAsync(INPUT.number);
-      Validator.validateNumbers(numbers);
-      return numbers;
-    } catch (error) {
-      return Promise.reject(error);
-    }
+  async enterThreeDigitNumber() {
+    const threeDigitNumber = await MissionUtils.Console.readLineAsync(INPUT.three_digit_number);
+    Validator.validateThreeDigitNumber(threeDigitNumber);
+    return threeDigitNumber.split('').map(oneDigitNumber => Number(oneDigitNumber));
   },
 
-  async enterFlag() {
-    try {
-      const flag = await MissionUtils.Console.readLineAsync(`${INPUT.flag}${LINE_BREAK}`);
-      Validator.validateFlag(flag);
-      return flag;
-    } catch (error) {
-      return Promise.reject(error);
-    }
+  async enterRestartOrExit() {
+    const restartOrExit = await MissionUtils.Console.readLineAsync(`${INPUT.restart_or_exit}${LINE_BREAK}`);
+    Validator.validateRestartOrExit(restartOrExit);
+    return Number(restartOrExit);
   },
 };
 
