@@ -15,6 +15,7 @@ const OUTPUT = Object.freeze({
 const BALL = '볼';
 const STRIKE = '스트라이크';
 const NOTHING = '낫싱';
+const BLANK = '';
 const LINE_BREAK = '\n';
 
-export { INPUT, ERROR, OUTPUT, BALL, STRIKE, NOTHING, LINE_BREAK };
+export { INPUT, ERROR, OUTPUT, BALL, STRIKE, NOTHING, BLANK, LINE_BREAK };
