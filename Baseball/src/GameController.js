@@ -68,13 +68,13 @@ class GameController {
   isAgainOrEnd(strike) {
     if (strike === THREE) {
       Output.printEnd();
-      return this.showRestartOrExit();
+      return this.isRestartOrExit();
     }
 
     return this.playBaseball();
   }
 
-  async showRestartOrExit() {
+  async isRestartOrExit() {
     const restartOrExit = await Input.enterRestartOrExit();
 
     if (restartOrExit === RESTART) {
