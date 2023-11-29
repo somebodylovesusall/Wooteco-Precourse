@@ -1,27 +1,25 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
-import { START_INCLUSIVE, END_INCLUSIVE, ZERO, ONE, FOUR, NINE } from './constants/numbers.js';
+import { START_INCLUSIVE, END_INCLUSIVE, ZERO, ONE, FOUR } from './constants/numbers.js';
 
 class Car {
-  constructor(names) {
-    this.cars = {};
-    names.forEach(key => {
-      this.cars[key] = ZERO;
+  #cars = {};
+
+  constructor(cars) {
+    cars.forEach(car => {
+      this.#cars[car] = ZERO;
     });
   }
 
   getCars() {
-    return this.cars;
+    return this.#cars;
   }
 
-  pickRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
-  }
+  isGoOrStop() {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
 
-  isGoOrStop(randomNumber) {
-    if (randomNumber >= FOUR && randomNumber <= NINE) {
+    if (randomNumber >= FOUR) {
       return ONE;
     }
-
     return ZERO;
   }
 }
