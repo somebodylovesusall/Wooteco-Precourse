@@ -6,7 +6,7 @@ const Output = {
     MissionUtils.Console.print(`${LINE_BREAK}${OUTPUT.game_result}`);
   },
 
-  printRaceResult(cars) {
+  printRoundResult(cars) {
     Object.entries(cars).forEach(([car, result]) => {
       MissionUtils.Console.print(`${car} ${COLON} ${HYPHEN.repeat(result)}`);
     });
