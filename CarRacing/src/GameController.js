@@ -5,39 +5,40 @@ import Input from './views/Input.js';
 import Output from './views/Output.js';
 
 class GameController {
-  async raceCars() {
-    const names = await Input.enterCarNames();
-    const trial = await Input.enterTrialNumber();
-    const car = new Car(names);
+  #car;
 
-    let count = ONE;
-    while (count <= trial) {
-      const cars = this.makeCars(car);
-      Output.printGameResult(count, cars);
-      count = count + ONE;
+  async raceCars() {
+    const cars = await Input.enterCarNames();
+    const trial = await Input.enterTrialNumber();
+    this.#car = new Car(cars);
+
+    Output.printGameResult();
+    let round = ONE;
+    while (round <= trial) {
+      const cars = this.makeRoundResult();
+      Output.printRoundResult(cars);
+      round = round + ONE;
     }
 
-    const winners = this.makeWinners(car);
+    const winners = this.makeFinalWinners();
     Output.printFinalWinners(winners);
   }
 
-  makeCars(car) {
-    const cars = car.getCars();
+  makeRoundResult() {
+    const cars = this.#car.getCars();
 
-    Object.keys(cars).forEach(key => {
-      const randomNumber = car.pickRandomNumber();
-      const goOrStop = car.isGoOrStop(randomNumber);
-      cars[key] = cars[key] + goOrStop;
+    Object.keys(cars).forEach(car => {
+      const goOrStop = this.#car.isGoOrStop();
+      cars[car] = cars[car] + goOrStop;
     });
 
     return cars;
   }
 
-  makeWinners(car) {
-    const cars = car.getCars();
+  makeFinalWinners() {
+    const cars = this.#car.getCars();
     const winner = new Winner(cars);
-    const max = winner.countMax();
-    const winners = winner.showWinners(max);
+    const winners = winner.showWinners();
 
     return winners;
   }
