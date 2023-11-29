@@ -5,7 +5,7 @@ const Validator = {
   validateCarNames(carNames) {
     const cars = carNames.split(COMMA).map(name => name.trim());
 
-    if (cars.length < MIN_CARS_LENGTH || cars.length !== [...new Set(cars)].length) {
+    if (cars.length < MIN_CARS_LENGTH || cars.length !== new Set(cars).size) {
       throw new Error(ERROR.not_valid_names);
     }
 
