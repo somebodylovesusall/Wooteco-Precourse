@@ -1,21 +1,20 @@
 class Winner {
+  #winners = [];
+
   constructor(cars) {
     this.cars = cars;
-    this.winners = [];
   }
 
-  countMax() {
-    return Math.max(...Object.values(this.cars));
-  }
+  showWinners() {
+    const max = Math.max(...Object.values(this.cars));
 
-  showWinners(max) {
-    Object.keys(this.cars).forEach(key => {
-      if (this.cars[key] === max) {
-        this.winners.push(key);
+    Object.keys(this.cars).forEach(car => {
+      if (this.cars[car] === max) {
+        this.#winners.push(car);
       }
     });
 
-    return this.winners;
+    return this.#winners;
   }
 }
 
