@@ -8,7 +8,8 @@ class App {
     await machine.makeBonus(winning);
     const matches = machine.calculateMatches();
     const grossProfit = machine.calculateGrossProfit(matches);
-    machine.showStatistics(matches, grossProfit);
+    machine.showStatistics(matches);
+    machine.showGrossProfit(grossProfit);
   }
 }
 
