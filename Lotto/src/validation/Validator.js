@@ -1,5 +1,5 @@
-import { ERROR } from '../constants/messages.js';
-import { PRICE_UNIT, ZERO } from '../constants/numbers.js';
+import { ERROR, COMMA } from '../constants/messages.js';
+import { END_INCLUSIVE, LOTTO_COUNT, PRICE_UNIT, START_INCLUSIVE, ZERO } from '../constants/numbers.js';
 
 const Validator = {
   validatePrice(price) {
@@ -13,11 +13,34 @@ const Validator = {
   },
   
   validateWinning(winning) {
+    const winningNumbers = winning.split(COMMA);
+    if (winningNumbers.length !== LOTTO_COUNT) {
+      throw new Error(ERROR.not_a_valid_winning);
+    }
 
+    if (winningNumbers.length !== new Set(winningNumbers).size) {
+      throw new Error(ERROR.not_a_valid_winning);
+    }
+
+    winningNumbers.forEach(number => {
+      if (!Number(number) || !Number.isInteger(Number(number) || Number(number) < START_INCLUSIVE || Number(number) > END_INCLUSIVE)) {
+        throw new Error(ERROR.not_a_valid_winning);
+      }
+    });
   },
 
-  validateBonus(bonus) {
+  validateBonus(winning, bonus) {
+    if (!Number(bonus) || !Number.isInteger(Number(bonus))) {
+      throw new Error(ERROR.not_a_valid_bonus);
+    }
 
+    if (Number(bonus) < START_INCLUSIVE || Number(bonus) > END_INCLUSIVE) {
+      throw new Error(ERROR.not_a_valid_bonus);
+    }
+
+    if (winning.includes(Number(bonus))) {
+      throw new Error(ERROR.not_a_valid_bonus);
+    }
   },
 }
 
