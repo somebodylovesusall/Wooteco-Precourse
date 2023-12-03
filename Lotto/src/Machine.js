@@ -2,7 +2,7 @@ import { MissionUtils } from '@woowacourse/mission-utils';
 import Lotto from './Lotto.js';
 import Input from './views/Input.js';
 import Output from './views/Output.js';
-import { ZERO, ONE, THREE, FOUR, FIVE, SIX, THREE_PRIZE, FOUR_PRIZE, FIVE_PRIZE, FIVE_PLUS_BONUS_PRIZE, SIX_PRIZE, PRICE_UNIT, HUNDRED } from './constants/numbers.js';
+import { PRIZE, ZERO, ONE, THREE, FOUR, FIVE, SIX, PRICE_UNIT, HUNDRED } from './constants/numbers.js';
 
 class Machine {
   #lottos;
@@ -59,14 +59,16 @@ class Machine {
     return { winningCount, bonusCount };
   }
 
-  showStatistics(matches, grossProfit) {
+  showStatistics(matches) {
     Output.printStatistics(matches);
+  }
+
+  showGrossProfit(grossProfit) {
     Output.printGrossProfit(grossProfit);
   }
 
   calculateMatches() {
-    const matches = {three: ZERO, four: ZERO, five: ZERO, fivePlusBonus: ZERO, six: ZERO};
-
+    const matches = { three: ZERO, four: ZERO, five: ZERO, fivePlusBonus: ZERO, six: ZERO };
     this.#lottos.forEach(lotto => {
       const { winningCount, bonusCount } = this.compareLottos(lotto);
       if (winningCount === THREE) {
@@ -86,11 +88,10 @@ class Machine {
   }
 
   calculateGrossProfit(matches) {
-    const prize = THREE_PRIZE * matches.three
-                        + FOUR_PRIZE * matches.four 
-                        + FIVE_PRIZE * matches.five 
-                        + FIVE_PLUS_BONUS_PRIZE * matches.fivePlusBonus 
-                        + SIX_PRIZE * matches.six;
+    let prize = ZERO;
+    Object.keys(matches).forEach(number => {
+      prize = prize + matches[number] * PRIZE[number];
+    });
     const grossProfit = prize / (this.#lottos.length * PRICE_UNIT) * HUNDRED;
 
     return grossProfit;
