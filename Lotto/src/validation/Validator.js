@@ -1,5 +1,5 @@
 import { ERROR, COMMA } from '../constants/messages.js';
-import { END_INCLUSIVE, LOTTO_COUNT, PRICE_UNIT, START_INCLUSIVE, ZERO } from '../constants/numbers.js';
+import { END_INCLUSIVE, LOTTO_NUMBER_COUNT, PRICE_UNIT, START_INCLUSIVE, ZERO } from '../constants/numbers.js';
 
 const Validator = {
   validatePrice(price) {
@@ -14,7 +14,7 @@ const Validator = {
   
   validateWinning(winning) {
     const winningNumbers = winning.split(COMMA);
-    if (winningNumbers.length !== LOTTO_COUNT) {
+    if (winningNumbers.length !== LOTTO_NUMBER_COUNT) {
       throw new Error(ERROR.not_a_valid_winning);
     }
 
