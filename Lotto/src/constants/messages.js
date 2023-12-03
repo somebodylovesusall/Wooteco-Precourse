@@ -1,3 +1,6 @@
+const NEWLINE = '\n';
+const COMMA = ',';
+
 const INPUT = Object.freeze({
   price: '구입금액을 입력해 주세요.',
   winning: '당첨 번호를 입력해 주세요.',
@@ -16,14 +19,11 @@ const OUTPUT = {
   five_match: '5개 일치 (1,500,000원) - ',
   five_plus_bonus_match: '5개 일치, 보너스 볼 일치 (30,000,000원) - ',
   six_match: '6개 일치 (2,000,000,000원) - ',
+  lottos: '개를 구매했습니다.',
+  count: '개',
+  statistics: `${NEWLINE}당첨 통계${NEWLINE}---`,
+  gross_profit: '총 수익률은 ',
+  percent: '%입니다.',
 };
 
-const NEWLINE = '\n';
-const COMMA = ',';
-const LOTTOS = '개를 구매했습니다.';
-const COUNT = '개';
-const STATISTICS = `${NEWLINE}당첨 통계${NEWLINE}---${NEWLINE}`;
-const TOTAL_PROFIT = '총 수익률은 ';
-const PERCENT = '%입니다.';
-
-export { INPUT, ERROR, OUTPUT, LOTTOS, COUNT, STATISTICS, NEWLINE, TOTAL_PROFIT, PERCENT, COMMA };
+export { INPUT, ERROR, OUTPUT, NEWLINE, COMMA };
