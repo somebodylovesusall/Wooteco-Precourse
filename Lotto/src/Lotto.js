@@ -10,7 +10,7 @@ class Lotto {
   makeLottos() {
     let count = ONE;
     while (count <= this.amount) {
-      this.#numbers.push(MissionUtils.Random.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_COUNT));
+      this.#numbers.push(MissionUtils.Random.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_COUNT).sort((prev, curr) => prev - curr));
       count = count + ONE;
     }
     
