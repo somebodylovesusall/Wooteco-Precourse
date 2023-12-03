@@ -15,9 +15,9 @@ const Input = {
     return winning.split(COMMA).map(number => Number(number));
   },
 
-  async enterBonus() {
-    const bonus = await MissionUtils.Console.readLineAsync(`${INPUT.bonus}${NEWLINE}`);
-    Validator.validateBonus(bonus);
+  async enterBonus(winning) {
+    const bonus = await MissionUtils.Console.readLineAsync(`${NEWLINE}${INPUT.bonus}${NEWLINE}`);
+    Validator.validateBonus(winning, bonus);
     return Number(bonus);
   },
 }
