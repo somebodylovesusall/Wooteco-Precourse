@@ -22,7 +22,7 @@ const NEWLINE = '\n';
 const COMMA = ',';
 const LOTTOS = '개를 구매했습니다.';
 const COUNT = '개';
-const STATISTICS = `당첨 통계${NEWLINE}---${NEWLINE}`;
+const STATISTICS = `${NEWLINE}당첨 통계${NEWLINE}---${NEWLINE}`;
 const TOTAL_PROFIT = '총 수익률은 ';
 const PERCENT = '%입니다.';
 
