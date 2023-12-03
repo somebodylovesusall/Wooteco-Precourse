@@ -1,5 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { PRICE_UNIT, ONE, START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT } from './constants/numbers.js';
+
 class Lotto {
   #numbers = [];
 
