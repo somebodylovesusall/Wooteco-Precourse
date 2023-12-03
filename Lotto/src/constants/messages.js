@@ -18,11 +18,12 @@ const OUTPUT = {
   six_match: '6개 일치 (2,000,000,000원) - ',
 };
 
+const NEWLINE = '\n';
+const COMMA = ',';
 const LOTTOS = '개를 구매했습니다.';
 const COUNT = '개';
 const STATISTICS = `당첨 통계${NEWLINE}---${NEWLINE}`;
-const NEWLINE = '\n';
 const TOTAL_PROFIT = '총 수익률은 ';
 const PERCENT = '%입니다.';
 
-export { INPUT, ERROR, OUTPUT, LOTTOS, COUNT, STATISTICS, NEWLINE, TOTAL_PROFIT, PERCENT };
+export { INPUT, ERROR, OUTPUT, LOTTOS, COUNT, STATISTICS, NEWLINE, TOTAL_PROFIT, PERCENT, COMMA };
