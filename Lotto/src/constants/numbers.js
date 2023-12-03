@@ -1,0 +1,5 @@
+const START_INCLUSIVE = 1;
+const END_INCLUSIVE = 45;
+const LOTTOS = 6;
+
+export { START_INCLUSIVE, END_INCLUSIVE, LOTTOS };
