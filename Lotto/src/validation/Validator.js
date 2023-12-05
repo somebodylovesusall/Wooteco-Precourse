@@ -7,6 +7,10 @@ const Validator = {
       throw new Error(ERROR.not_a_valid_price);
     }
 
+    if (Number(price) < PRICE_UNIT) {
+      throw new Error(ERROR.not_a_valid_price);
+    }
+
     if (Number(price) % PRICE_UNIT !== ZERO) {
       throw new Error(ERROR.not_a_valid_price);
     }
