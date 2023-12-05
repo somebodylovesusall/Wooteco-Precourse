@@ -7,6 +7,12 @@ describe('로또 구입 금액 유효성 검증 테스트', () => {
     }).toThrow('[ERROR]');
   });
 
+  test('로또 구입 금액이 1,000원 미만이면 예외를 발생한다.', () =>{
+    expect(() => {
+      Validator.validatePrice('0');
+    }).toThrow('[ERROR]');
+  });
+
   test('로또 구입 금액이 1,000원 단위로 나누어 떨어지지 않으면 예외를 발생한다.', () =>{
     expect(() => {
       Validator.validatePrice('1800');
