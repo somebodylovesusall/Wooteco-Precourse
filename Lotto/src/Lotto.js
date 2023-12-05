@@ -1,18 +1,22 @@
+import { MissionUtils } from '@woowacourse/mission-utils';
+import { PRICE_UNIT, ONE, START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT } from './constants/numbers.js';
+
 class Lotto {
-  #numbers;
+  #numbers = [];
 
-  constructor(numbers) {
-    this.#validate(numbers);
-    this.#numbers = numbers;
+  constructor(price) {
+    this.amount = price / PRICE_UNIT;
   }
 
-  #validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+  makeLottos() {
+    let amount = ONE;
+    while (amount <= this.amount) {
+      this.#numbers.push(MissionUtils.Random.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT).sort((prev, curr) => prev - curr));
+      amount = amount + ONE;
     }
+    
+    return this.#numbers;
   }
-
-  // TODO: 추가 기능 구현
 }
 
 export default Lotto;
