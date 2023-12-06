@@ -12,8 +12,8 @@ class Machine {
   async playLotto() {
     try {
       const price = await Input.enterPrice();
-      const lotto = new Lotto(price);
-      this.#lottos = lotto.makeLottos();
+      const lotto = new Lotto();
+      this.#lottos = lotto.makeLottos(price);
       Output.printLottos(this.#lottos);
       return this.#lottos;
     } catch (error) {
