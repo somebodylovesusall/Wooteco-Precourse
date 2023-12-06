@@ -4,13 +4,9 @@ import { PRICE_UNIT, ONE, START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT } f
 class Lotto {
   #numbers = [];
 
-  constructor(price) {
-    this.amount = price / PRICE_UNIT;
-  }
-
-  makeLottos() {
+  makeLottos(price) {
     let amount = ONE;
-    while (amount <= this.amount) {
+    while (amount <= (price / PRICE_UNIT)) {
       this.#numbers.push(MissionUtils.Random.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT).sort((prev, curr) => prev - curr));
       amount = amount + ONE;
     }
