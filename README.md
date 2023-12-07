@@ -13,7 +13,3 @@
 로또 번호와 당첨 번호를 비교하여 당첨 통계 및 총 수익률을 계산하는 로또 머신입니다.
 
 ### 🎄 [Christmas Promotion](https://github.com/somebodylovesusall/Wooteco-Precourse/tree/main/Christmas/docs)
-
-### 🌉 Bridge Pass
-
-### 🍱 Lunch Menu Recommendation
