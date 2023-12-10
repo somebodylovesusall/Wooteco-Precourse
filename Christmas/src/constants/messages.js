@@ -33,12 +33,12 @@ const BADGE = Object.freeze({
 const OUTPUT = Object.freeze({
   greeting: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
   preview: date => `12월 ${date}일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!${NEWLINE}`,
-  orders: `<주문 메뉴>${NEWLINE}`,
-  total_order: totalOrder => `<할인 전 총주문 금액>${NEWLINE}${totalOrder}${WON}`,
-  free: free => `<증정 메뉴>${NEWLINE}${free}${QUANTITY}`,
-  benefits: `<혜택 내역>${NEWLINE}`,
-  total_benefit: totalBenefit => `<총혜택 금액>${NEWLINE}${MINUS}${totalBenefit}${WON}`,
-  total_pay: totalPay => `<할인 후 예상 결제 금액>${NEWLINE}${totalPay}${WON}`,
+  order: '<주문 메뉴>',
+  total_order: totalOrder => `<할인 전 총주문 금액>${NEWLINE}${totalOrder}${WON}${NEWLINE}`,
+  free: '<증정 메뉴>',
+  benefit: '<혜택 내역>',
+  total_benefit: totalBenefit => `<총혜택 금액>${NEWLINE}${MINUS}${totalBenefit}${WON}${NEWLINE}`,
+  total_pay: totalPay => `<할인 후 예상 결제 금액>${NEWLINE}${totalPay}${WON}${NEWLINE}`,
   badge: badge => `<12월 이벤트 배지>${NEWLINE}${badge}`
 });
 
