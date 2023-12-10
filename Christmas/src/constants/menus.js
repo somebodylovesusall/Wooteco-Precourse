@@ -1,10 +1,6 @@
 const CATEGORY = ['애피타이저', '메인', '디저트', '음료'];
-const FOOD = [
-  '양송이수프', '타파스', '시저샐러드', 
-  '티본스테이크', '바비큐립', '해산물파스타', '크리스마스파스타', 
-  '초코케이크', '아이스크림',
-  '제로콜라', '레드와인', '샴페인'
-];
+const FOOD = ['양송이수프', '타파스', '시저샐러드', '티본스테이크', '바비큐립', '해산물파스타', '크리스마스파스타', '초코케이크', '아이스크림', '제로콜라', '레드와인', '샴페인'];
+const DRINK = ['제로콜라', '레드와인', '샴페인'];
 const MENU = Object.freeze({
   애피타이저: Object.freeze({
     양송이수프: 6000,
@@ -31,4 +27,4 @@ const MENU = Object.freeze({
   }),
 });
 
-export { CATEGORY, FOOD, MENU };
+export { CATEGORY, FOOD, DRINK, MENU };
