@@ -3,7 +3,8 @@ import Badge from './Badge.js';
 import Input from './views/Input.js';
 import Output from './views/Output.js';
 import { MENU } from './constants/menus.js';
-import { MIN_EVENT_PRICE, ZERO } from './constants/numbers.js';
+import { FREE_PRICE, MIN_EVENT_PRICE, ZERO } from './constants/numbers.js';
+import { DEFAULT } from './constants/messages.js';
 
 class Planner {
   #totalOrder;
@@ -44,47 +45,68 @@ class Planner {
   }
 
   makeEvent(date, order) {
+    this.calculateTotalOrder(order);
+
     if (this.#totalOrder >= MIN_EVENT_PRICE) {
       const event = new Event(date, order);
       return event;
     }
   }
 
-  makeBenefit() {
+  calculateBenefit(discount, free) {
+    const benefit = { ...discount };
+    
+    if (free === FREE_PRICE) {
+      benefit.free = FREE_PRICE;
+    }
 
+    return benefit;
   }
 
-  calculateTotalBenefit(event) {
-    const totalDiscount = event.calculateTotalDiscount();
-    const free = event.calculateFree(this.#totalOrder);
+  calculateTotalBenefit(benefit) {
+    let totalBenefit = ZERO;
 
-    return totalDiscount + free;
+    Object.keys(benefit).forEach(type => {
+      totalBenefit = totalBenefit + benefit[type];
+    });
+
+    return totalBenefit;
   }
 
-  calculateTotalPay(event) {
-    const totalDiscount = event.calculateTotalDiscount();
+  calculateTotalPay(totalDiscount) {
     return this.#totalOrder - totalDiscount;
   }
 
   makeBadge(totalBenefit) {
     const badge = new Badge(totalBenefit);
-    return badge;
+    const decemberBadge = badge.awardBadge();
+    return decemberBadge;
   }
 
-  showResult(date, order) {
+  makeResult(event) {
+    if (event) {
+      const free = event.calculateFree(this.#totalOrder);
+      const discount = event.calculateDiscount();
+      const totalDiscount = event.calculateTotalDiscount(discount);
+      const benefit = this.calculateBenefit(discount, free);
+      const totalBenefit = this.calculateTotalBenefit(benefit);
+      const totalPay = this.calculateTotalPay(totalDiscount);
+      const badge = this.makeBadge(totalBenefit);
+
+      return { free, benefit, totalBenefit, totalPay, badge };
+    }
+
+    return { free: ZERO, benefit: DEFAULT, totalBenefit: ZERO, totalPay: this.#totalOrder, badge: DEFAULT };
+  }
+
+  showResult(date, order, event) {
+    const { free, benefit, totalBenefit, totalPay, badge } = this.makeResult(event);
+
     Output.printPreview(date);
     Output.printOrder(order);
-    this.calculateTotalOrder(order);
-
-    const event = this.makeEvent(date, order);
-    const free = event ? event.calculateFree(this.#totalOrder) : ZERO;
-    const totalBenefit = event ? this.calculateTotalBenefit(event) : ZERO;
-    const totalPay = event ? this.calculateTotalPay(event) : this.#totalOrder;
-    const badge = this.makeBadge(totalBenefit);
-
     Output.printTotalOrder(this.#totalOrder);
     Output.printFree(free);
-    Output.printBenefit();
+    Output.printBenefit(benefit);
     Output.printTotalBenefit(totalBenefit);
     Output.printTotalPay(totalPay);
     Output.printBadge(badge);

@@ -1,5 +1,5 @@
 import { Console } from '@woowacourse/mission-utils';
-import { DEFAULT, NEWLINE, OUTPUT, QUANTITY } from '../constants/messages.js';
+import { KO_KR, DEFAULT, NEWLINE, OUTPUT, QUANTITY, MINUS, WON, BENEFIT } from '../constants/messages.js';
 import { ZERO, ONE, FREE_PRICE } from '../constants/numbers.js';
 import { FREE_MENU } from '../constants/menus.js';
 
@@ -27,21 +27,38 @@ const Output = {
   printFree(free) {
     Console.print(OUTPUT.free);
 
-    if (free === FREE_PRICE) { 
-      Console.print(`${FREE_MENU} ${ONE}${QUANTITY}${NEWLINE}`);
+    if (free === ZERO) {
+      Console.print(`${DEFAULT}${NEWLINE}`);
       return;
     }
 
-    Console.print(`${DEFAULT}${NEWLINE}`);
+    Console.print(`${FREE_MENU} ${ONE}${QUANTITY}${NEWLINE}`);
   },
 
-  printBenefit() {
+  printBenefit(benefit) {
     Console.print(OUTPUT.benefit);
-    Console.print(NEWLINE);
+
+    if (benefit === DEFAULT) {
+      Console.print(`${DEFAULT}${NEWLINE}`);
+      return;
+    }
+
+    Object.keys(benefit).forEach(type => {
+      if (benefit[type] > ZERO) {
+        Console.print(`${BENEFIT[type]}${MINUS}${benefit[type].toLocaleString(KO_KR)}${WON}`);
+      }
+    });
   },
 
   printTotalBenefit(totalBenefit) {
-    Console.print(OUTPUT.total_benefit(totalBenefit));
+    Console.print(`${NEWLINE}${OUTPUT.total_benefit}`);
+    
+    if (totalBenefit === ZERO) {
+      Console.print(`${ZERO}${WON}${NEWLINE}`);
+      return;
+    }
+
+    Console.print(`${MINUS}${totalBenefit.toLocaleString(KO_KR)}${WON}${NEWLINE}`);
   },
 
   printTotalPay(totalPay) {
@@ -49,6 +66,11 @@ const Output = {
   },
 
   printBadge(badge) {
+    if (badge === DEFAULT) {
+      Console.print(OUTPUT.badge(DEFAULT));
+      return;
+    }
+
     Console.print(OUTPUT.badge(badge));
   },
   

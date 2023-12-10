@@ -13,12 +13,12 @@ class Event {
   calculateChristmasDday() {
     let christmasDday = CHRISTMAS_DDAY_PRICE;
     let date = START_DATE;
-
+  
     while (date < this.#date) {
       christmasDday = christmasDday + ADD_PRICE;
       date = date + ONE;
     }
-    
+
     return christmasDday;
   }
 
@@ -60,21 +60,42 @@ class Event {
     return free;
   }
 
-  calculateTotalDiscount() {
-    let totalDiscount = ZERO;
+  initializeDiscount() {
+    const discount = {
+      christmasDday: ZERO,
+      weekdays: ZERO,
+      weekends: ZERO,
+      special: ZERO,
+    }
+
+    return discount;
+  }
+
+  calculateDiscount() {
+    const discount = this.initializeDiscount();
 
     if (this.#date >= START_DATE && this.#date <= CHRISTMAS_DATE) {
-      totalDiscount = totalDiscount + this.calculateChristmasDday();
+      discount.christmasDday = this.calculateChristmasDday();
     }
     if (WEEKENDS_DATE.includes(this.#date)) {
-      totalDiscount = totalDiscount + this.calculateWeekdays();
+      discount.weekdays = this.calculateWeekdays();
     }
     if (WEEKDAYS_DATE.includes(this.#date)) {
-      totalDiscount = totalDiscount + this.calculateWeekdays();
+      discount.weekends = this.calculateWeekends();
     }
     if (SPECIAL_DATE.includes(this.#date)) {
-      totalDiscount = totalDiscount + this.calculateSpecial();
+      discount.special = this.calculateSpecial();
     }
+
+    return discount;
+  }
+
+  calculateTotalDiscount(discount) {
+    let totalDiscount = ZERO;
+
+    Object.keys(discount).forEach(type => {
+      totalDiscount = totalDiscount + discount[type];
+    });
 
     return totalDiscount;
   }
