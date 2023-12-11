@@ -1,4 +1,5 @@
 import Planner from './Planner.js';
+
 class App {
   async run() {
     const planner = new Planner();

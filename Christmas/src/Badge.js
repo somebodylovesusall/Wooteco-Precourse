@@ -13,13 +13,9 @@ class Badge {
 
     if (this.#totalBenefit >= MIN_SANTA_PRICE) {
       badge = BADGE.santa;
-    }
-
-    if (this.#totalBenefit < MIN_SANTA_PRICE && this.#totalBenefit >= MIN_TREE_PRICE) {
+    } else if (this.#totalBenefit < MIN_SANTA_PRICE && this.#totalBenefit >= MIN_TREE_PRICE) {
       badge = BADGE.tree;
-    }
-
-    if (this.#totalBenefit < MIN_TREE_PRICE && this.#totalBenefit >= MIN_STAR_PRICE) {
+    } else if (this.#totalBenefit < MIN_TREE_PRICE && this.#totalBenefit >= MIN_STAR_PRICE) {
       badge = BADGE.star;
     }
 

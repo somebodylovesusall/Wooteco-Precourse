@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { KO_KR, DEFAULT, NEWLINE, OUTPUT, QUANTITY, MINUS, WON, BENEFIT } from '../constants/messages.js';
-import { ZERO, ONE, FREE_PRICE } from '../constants/numbers.js';
+import { ZERO, ONE } from '../constants/numbers.js';
 import { FREE_MENU } from '../constants/menus.js';
 
 const Output = {
