@@ -1,6 +1,6 @@
 import { HYPHEN, ERROR } from '../constants/messages.js';
 import { END_DATE, MAX_ORDER_QUANTITY, ONE, START_DATE, ZERO } from '../constants/numbers.js';
-import { FOOD, DRINK } from '../constants/menus.js';
+import { DRINK, MENU } from '../constants/menus.js';
 
 const Validator = {
   validateDate(date) {
@@ -34,13 +34,10 @@ const Validator = {
       throw new Error(ERROR.not_a_valid_order);
     }
 
-    const onlyMenu = Object.keys(validatedOrder).every(menu => FOOD.includes(menu));
-    if (!onlyMenu) {
-      throw new Error(ERROR.not_a_valid_order);
-    }
-
-    const onlyDrink = Object.keys(validatedOrder).every(menu => DRINK.includes(menu));
-    if (onlyDrink) {
+    const onlyMenu = Object.keys(validatedOrder).every(menu => Object.keys(MENU).includes(menu));
+    const onlyDrink = Object.keys(validatedOrder).every(drink => DRINK.includes(drink));
+    
+    if (!onlyMenu || onlyDrink) {
       throw new Error(ERROR.not_a_valid_order);
     }
   },
