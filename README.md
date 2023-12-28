@@ -19,5 +19,3 @@
 ### 🎄 [Christmas Promotion](https://github.com/somebodylovesusall/Wooteco-Precourse/tree/main/Christmas/docs)
 
 고객에게 중복된 할인 및 증정 혜택을 제공하는 이벤트 플래너입니다.
-
-### 🚨 [On Call](https://github.com/somebodylovesusall/Wooteco-Precourse/tree/main/OnCall/docs)
